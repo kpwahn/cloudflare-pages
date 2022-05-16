@@ -9,4 +9,4 @@ jobs:
         with:
           node-version: '16'
       - run: npm i wrangler
-      - run: wrangler pages publish /
+      - run: node ./node_modules/.bin/wrangler2 pages publish /
