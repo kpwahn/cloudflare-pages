@@ -1,15 +1,17 @@
-name: learn-github-actions
-on: [push]
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  check-bats-version:
+  deploy:
     runs-on: ubuntu-latest
+    name: Deploy
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - name: Publish
+        uses: cloudflare/wrangler-action@2.0.0
         with:
-          node-version: '16'
-      - run: npm i wrangler
-      - run: echo "$CLOUDFLARE_API_TOKEN"
-      - run: node ./node_modules/.bin/wrangler2 pages publish / #Requires CLOUDFLARE_API_TOKEN Github secret
-        env: 
-          CLOUDFLARE_API_TOKEN: XbBnX5d0LoeFaklIPmgwQ6NBqieEMbO6qiqrwz40
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
