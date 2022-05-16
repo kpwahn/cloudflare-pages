@@ -11,4 +11,5 @@ jobs:
       - run: npm i wrangler
       - run: echo "$CLOUDFLARE_API_TOKEN"
       - run: node ./node_modules/.bin/wrangler2 pages publish / #Requires CLOUDFLARE_API_TOKEN Github secret
-        env: CLOUDFLARE_API_TOKEN: XbBnX5d0LoeFaklIPmgwQ6NBqieEMbO6qiqrwz40
+        env: 
+          CLOUDFLARE_API_TOKEN: XbBnX5d0LoeFaklIPmgwQ6NBqieEMbO6qiqrwz40
